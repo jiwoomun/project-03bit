@@ -1,7 +1,8 @@
 import React from 'react'
 import { BrowserRouter as Router, Link } from "react-router-dom"
 import styled from 'styled-components';
-import counter from './counter/Counter'
+import Counter from 'counter/Counter';
+/*import Counter from './counter/Counter'*/
 
 const App = () => {
   return (<Container>
@@ -14,8 +15,8 @@ const App = () => {
       <Link to="">Go to Google</Link><br/>
     </Router>
   </nav>
+
   <Counter/>
-  
  </Element>
   </Container>)
 }

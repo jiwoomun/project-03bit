@@ -1,6 +1,6 @@
 import React from 'react'
 
-const counter = () => {
+const Counter = () => {
     return(
 
 <h1></h1>
@@ -8,4 +8,4 @@ const counter = () => {
     );
 }
 
-export default counter
+export default Counter
