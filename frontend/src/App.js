@@ -1,32 +1,32 @@
 import React from 'react'
-import { BrowserRouter as Router, Link } from "react-router-dom"
-import styled from 'styled-components';
-import Counter from 'counter/Counter';
-/*import Counter from './counter/Counter'*/
+import { Redirect, Route } from "react-router-dom"
+import { Login, SignUp, UserDetail, UserEdit, UserList } from 'user'
+import { Home, User, Counter } from 'templates'
+import { Nav } from 'common'
+import { BrowserRouter as Router } from 'react-router-dom'
+import { todoReducer } from 'store'
+import { createStore, combineReducers} from 'redux'
+import { Provider } from 'react-redux'
+const rootReducer = combineReducers({todoReducer})
 
 const App = () => {
-  return (<Container>
-  <Element>
-  <nav>
+  return ( <div>
     <Router>
-      <Link to="/">Home</Link><br/>
-      <Link to="/">Blog</Link><br/>
-      <Link to="/">About Me</Link><br/>
-      <Link to="">Go to Google</Link><br/>
-    </Router>
-  </nav>
+      <Provider store = {createStore(rootReducer)}>    
+      <Nav/>
+      <Route exact path='/' component={Home}/>
+      <Redirect exact from={'/'} to={'/home'}/>
+      <Route exact path='/counter' component={Counter}/>
+      <Route exact path='/user' component={User}/>
 
-  <Counter/>
- </Element>
-  </Container>)
+      <Route exact path='/login' component={Login}/>
+      <Route exact path='/signup' component={SignUp}/>
+      <Route exact path='/user-detail' component={UserDetail}/>
+      <Route exact path='/user-edit' component={UserEdit}/>
+      <Route exact path='/user-list' component={UserList}/>
+      </Provider>
+    </Router>
+    </div>)
 }
-const Container = styled.div`
-    width: 100%;
-    border: 1px solid #d1d8e4;
-`
-const Element = styled.div`
-  width: 400px;  
-  margin: 0 auto;
-   
-`
+
 export default App
